@@ -6,7 +6,15 @@ import cloudIcon from '../assets/icons/cloud.png'
 import windIcon from '../assets/icons/wind.png'
 import snowIcon from '../assets/icons/freeze.png'
 
-const WeatherDetails = () => {
+const WeatherDetails = ({ weatherData = {}, forecastData = [] }) => {
+  // Extract values with defaults
+  const condition = weatherData.condition || 'LOADING...';
+  const tempMax = weatherData.tempMax ?? 0;
+  const tempMin = weatherData.tempMin ?? 0;
+  const humidity = weatherData.humidity ?? 0;
+  const cloudy = weatherData.cloudy ?? 0;
+  const wind = weatherData.wind ?? 0;
+
   return (
     <div className="fixed z-10 backdrop-blur-[19px] border-[#FFFFFF24] border-t-[5px] left-0 right-0 bottom-0 top-[247px] md:top-[452px] lg:top-0 lg:left-[780px] lg:border-t-0 lg:border-l-[5px]">
       <h2
@@ -22,7 +30,7 @@ const WeatherDetails = () => {
         <h3
           className="text-[16px] md:text-[16px] lg:text-[16px] text-center md:text-center lg:text-left font-medium leading-tight uppercase text-white max-w-[320px] md:max-w-[380px] lg:max-w-[320px]"
         >
-          thunderstorm with light drizzle
+          {condition}
         </h3>
 
         {/* Weather Items Container */}
@@ -39,7 +47,7 @@ const WeatherDetails = () => {
               <span
                 className="text-[16px] md:text-[16px] font-normal text-white"
               >
-                19°
+                {tempMax}°
               </span>
               <img
                 src={heighTemIcon}
@@ -60,7 +68,7 @@ const WeatherDetails = () => {
               <span
                 className="text-[16px] md:text-[16px] font-normal text-white"
               >
-                15°
+                {tempMin}°
               </span>
               <img
                 src={lowTemIcon}
@@ -81,7 +89,7 @@ const WeatherDetails = () => {
               <span
                 className="text-[16px] md:text-[16px] font-normal text-white"
               >
-                58%
+                {humidity}%
               </span>
               <img
                 src={humadityIcon}
@@ -102,7 +110,7 @@ const WeatherDetails = () => {
               <span
                 className="text-[16px] md:text-[16px] font-normal text-white"
               >
-                86%
+                {cloudy}%
               </span>
               <img
                 src={cloudIcon}
@@ -123,7 +131,7 @@ const WeatherDetails = () => {
               <span
                 className="text-[16px] md:text-[16px] font-normal text-white"
               >
-                5km/h
+                {wind}km/h
               </span>
               <img
                 src={windIcon}
@@ -158,11 +166,8 @@ const WeatherDetails = () => {
 
         {/* Hourly Forecast Cards Container */}
         <div className="flex flex-col gap-[12px]">
-          {/* Sample hourly forecast cards - Only showing first 2 */}
-          {[
-            { time: '09:00', weather: 'Snow', temp: '19°', icon: snowIcon },
-            { time: '09:00', weather: 'Snow', temp: '10°', icon: snowIcon }
-          ].slice(0, 2).map((forecast, index) => (
+          {/* Map forecast data to cards */}
+          {forecastData.slice(0, 2).map((forecast, index) => (
             <div
               key={index}
               className="flex items-center justify-between w-[300px]"
@@ -171,7 +176,7 @@ const WeatherDetails = () => {
               <div className="flex items-center gap-[12px]">
                 {/* Weather Icon */}
                 <img
-                  src={forecast.icon}
+                  src={snowIcon}
                   alt={`Weather at ${forecast.time}`}
                   className="w-[40px] h-[40px] object-contain opacity-90"
                 />
@@ -186,7 +191,7 @@ const WeatherDetails = () => {
                   <span
                     className="text-[14px] font-normal text-white opacity-80"
                   >
-                    {forecast.weather}
+                    {forecast.condition}
                   </span>
                 </div>
               </div>
@@ -195,7 +200,7 @@ const WeatherDetails = () => {
               <span
                 className="text-[20px] font-normal text-white"
               >
-                {forecast.temp}
+                {forecast.temp}°
               </span>
             </div>
           ))}
