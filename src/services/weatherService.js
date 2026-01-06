@@ -38,3 +38,32 @@ export async function fetchForecast(city) {
 
   return data;
 }
+
+/**
+ * Search for cities (autocomplete)
+ * @param {string} query - Search query (min 3 characters recommended)
+ * @returns {Promise<Array>} - Array of matching locations
+ */
+export async function searchCities(query) {
+  if (!query || query.length < 2) {
+    return [];
+  }
+
+  const url = `${BASE_URL}/search.json?key=${API_KEY}&q=${encodeURIComponent(query)}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (!response.ok) {
+    return [];
+  }
+
+  // Return array of { id, name, region, country }
+  return data.map(item => ({
+    id: item.id,
+    name: item.name,
+    region: item.region,
+    country: item.country,
+    fullName: `${item.name}${item.region ? ', ' + item.region : ''}, ${item.country}`
+  }));
+}

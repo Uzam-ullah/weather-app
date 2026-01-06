@@ -14,27 +14,48 @@ const WeatherCard = ({ weatherData }) => {
         {temperature}°
       </div>
 
-      {/* Location + Time container */}
-      <div className="absolute left-29.5 top-39.75 w-34.75 h-10 md:left-52.5 md:top-76 md:w-47.25 md:h-16.75 lg:left-60.25 lg:top-111.25 lg:w-42.5 lg:h-17.5">
-        {/* Location */}
-        <div className="absolute left-0 top-0 w-34.75 h-[25.2174px] md:w-47.25 md:h-[53.011px] lg:w-42.5 lg:h-13.5 weather-location text-[30px] md:text-[48px] lg:text-[45px]">
-          {location}
+      {/* Location + Time + Icon container - Flexbox for dynamic layout */}
+      <div className="absolute left-29.5 top-39.75 md:left-52.5 md:top-76 lg:left-60.25 lg:top-111.25 flex items-start gap-2 md:gap-3 lg:gap-4">
+
+        {/* Location and Time/Date wrapper */}
+        <div className="flex flex-col">
+          {/* Location - Dynamic font with max-width and shrink */}
+          <div
+            className="weather-location max-w-[140px] md:max-w-[220px] lg:max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap"
+            style={{
+              fontSize: 'clamp(20px, 7vw, 30px)',
+            }}
+          >
+            <span className="md:hidden">{location}</span>
+          </div>
+          <div
+            className="hidden md:block lg:hidden weather-location max-w-[220px] overflow-hidden text-ellipsis whitespace-nowrap"
+            style={{ fontSize: 'clamp(32px, 5vw, 48px)' }}
+          >
+            {location}
+          </div>
+          <div
+            className="hidden lg:block weather-location max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap"
+            style={{ fontSize: 'clamp(32px, 3.5vw, 45px)' }}
+          >
+            {location}
+          </div>
+
+          {/* Time + Date - Added top margin */}
+          <div className="mt-2 md:mt-3 lg:mt-3 weather-time text-[10px] md:text-[16px] lg:text-[13.5px] opacity-90">
+            {time}
+            {time && date ? ' - ' : ''}
+            {date}
+          </div>
         </div>
 
-        {/* Time + Date */}
-        <div className="absolute left-0 top-[31.3px] md:left-[4.11px] md:top-13.25 lg:left-1 lg:top-13.5 w-34.75 h-[8.6957px] md:w-[184.8913px] md:h-3.5 lg:w-38.25 lg:h-4 weather-time text-[10px] md:text-[16px] lg:text-[13.5px]">
-          {time}
-          {time && date ? ' - ' : ''}
-          {date}
-        </div>
+        {/* Weather Icon - Positioned inline with flexbox, maintains gap */}
+        <img
+          src={cloudIcon}
+          alt="Cloud"
+          className="w-10 h-10 md:w-13.75 md:h-13.75 lg:w-13 lg:h-13 object-contain flex-shrink-0 mt-1 md:mt-2 lg:mt-2"
+        />
       </div>
-
-      {/* Weather Icon */}
-      <img
-        src={cloudIcon}
-        alt="Cloud"
-        className="absolute left-59.25 top-40.25 w-10 h-10 md:left-103.5 md:top-79.25 md:w-13.75 md:h-13.75 lg:left-104.75 lg:top-115.75 lg:w-13 lg:h-13 object-contain"
-      />
     </div>
   );
 };

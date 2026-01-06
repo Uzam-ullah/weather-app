@@ -31,6 +31,14 @@ function App() {
 
   const [forecastData, setForecastData] = useState([]);
 
+  // Auto-clear error after 5 seconds
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
   // Fetch weather data for a city
   const handleSearch = async (searchCity) => {
     if (!searchCity.trim()) return;
@@ -74,10 +82,11 @@ function App() {
 
       setForecastData(hourlyData);
       setCity(searchCity);
+      setSearchInput(''); // Clear search input on success
 
     } catch (err) {
-      setError(err.message);
-      alert(err.message);
+      // Set styled error instead of alert
+      setError(err.message || 'Location not found. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -121,6 +130,7 @@ function App() {
       >
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
+
       <Header
         searchInput={searchInput}
         onSearchInputChange={setSearchInput}
@@ -130,6 +140,7 @@ function App() {
       <WeatherDetails
         weatherData={weatherData}
         forecastData={forecastData}
+        error={error}
       />
 
 
