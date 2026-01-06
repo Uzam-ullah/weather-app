@@ -22,6 +22,21 @@ body {
   min-height: 100vh;
 }
 
+/* Desktop only: Lock viewport to prevent main page scrolling - only WeatherDetails should scroll */
+@media (min-width: 1024px) {
+
+  html,
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #root {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
 button:hover {
   border-color: #646cff;
 }
