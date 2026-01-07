@@ -122,10 +122,10 @@ const Header = ({ searchInput, onSearchInputChange, onSearch }) => {
       <div className="relative" ref={dropdownRef}>
         {/* Desktop Only: Seamless mask using same blur as WeatherDetails (19px) - blends naturally */}
         <div
-          className="hidden lg:block fixed top-0 left-[calc(780px+5px)] right-0 h-[130px] z-30 pointer-events-none backdrop-blur-[19px] mask-[linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]"
+          className="hidden lg:block fixed top-0 left-[calc(63.5%+5px)] right-0 h-[130px] z-30 pointer-events-none backdrop-blur-[19px] mask-[linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]"
         />
 
-        <div className="absolute top-4.75 right-8 w-31.25 h-5 md:top-3.25 md:right-16 md:w-76.25 md:h-11.25 lg:top-10.25 lg:right-24 lg:w-92.75 lg:h-12.5 lg:z-40 border-b border-white/70">
+        <div className="absolute top-4.75 right-8 w-31.25 h-5 md:top-3.25 md:right-16 md:w-76.25 md:h-11.25 lg:fixed lg:top-10.25 lg:left-[calc(63.5%+30px)] lg:right-[10%] lg:w-auto lg:h-12.5 lg:z-40 border-b border-white/70">
 
           {/* Search Input */}
           <input
@@ -153,7 +153,7 @@ const Header = ({ searchInput, onSearchInputChange, onSearch }) => {
 
         {/* Autocomplete Dropdown */}
         {showSuggestions && suggestions.length > 0 && (
-          <div className="absolute top-10 right-8 w-31.25 md:top-14 md:right-16 md:w-76.25 lg:top-24 lg:right-24 lg:w-92.75 backdrop-blur-xl bg-white/10 border border-white/20 rounded-lg shadow-lg overflow-hidden z-50">
+          <div className="absolute top-10 right-8 w-31.25 md:top-14 md:right-16 md:w-76.25 lg:fixed lg:top-24 lg:left-[calc(63.5%+30px)] lg:right-[6%] lg:w-auto backdrop-blur-xl bg-white/10 border border-white/20 rounded-lg shadow-lg overflow-hidden z-50">
             {suggestions.map((suggestion, index) => (
               <div
                 key={suggestion.id}

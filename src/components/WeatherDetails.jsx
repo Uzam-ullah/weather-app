@@ -16,7 +16,7 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
   const wind = weatherData.wind ?? 0;
 
   return (
-    <div className="fixed z-10 backdrop-blur-[19px] border-[#FFFFFF24] border-t-[5px] left-0 right-0 bottom-0 top-[247px] md:top-[452px] lg:top-0 lg:left-[780px] lg:border-t-0 lg:border-l-[5px] overflow-y-auto">
+    <div className="fixed z-10 backdrop-blur-[19px] border-[#FFFFFF24] border-t-[5px] left-0 right-0 bottom-0 top-[247px] md:top-[452px] lg:top-0 lg:left-[63.5%] lg:border-t-0 lg:border-l-[5px] overflow-y-auto">
 
       {/* Error Message Display */}
       {error && (
@@ -26,13 +26,13 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
       )}
 
       <h2
-        className="absolute w-[110px] h-[16px] top-[55px] left-1/2 -translate-x-1/2 md:w-[141px] md:h-[21px] md:top-[107px] md:left-1/2 md:-translate-x-1/2 lg:top-[132px] lg:left-[30px] lg:translate-x-0 text-[14px] md:text-[18px] font-normal not-italic leading-none tracking-normal text-white"
+        className="absolute w-[110px] h-[16px] top-[55px] left-1/2 -translate-x-1/2 md:w-[141px] md:h-[21px] md:top-[107px] md:left-1/2 md:-translate-x-1/2 lg:top-[132px] lg:left-[30px] lg:right-[6%] lg:translate-x-0 text-[14px] md:text-[18px] font-normal not-italic leading-none tracking-normal text-white"
       >
         Weather Details...
       </h2>
 
       {/* Weather Details Container - Now with relative positioning for scroll */}
-      <div className="absolute top-[115px] left-1/2 -translate-x-1/2 md:top-[165px] lg:top-[175px] lg:left-[30px] lg:translate-x-0 flex flex-col gap-[25px] md:gap-[30px] lg:gap-[24px] pb-[20px]">
+      <div className="absolute top-[115px] left-1/2 -translate-x-1/2 md:top-[165px] lg:top-[175px] lg:left-[30px] lg:right-[6%] lg:translate-x-0 flex flex-col gap-[25px] md:gap-[30px] lg:gap-[24px] pb-[20px]">
 
         {/* Heading - Weather condition with word-wrap for long descriptions */}
         <h3
@@ -161,7 +161,7 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
       </div>
 
       {/* Hourly Weather Forecast Section - Desktop Only */}
-      <div className="hidden lg:block absolute top-[490px] left-[30px]">
+      <div className="hidden lg:block absolute top-[490px] left-[30px] right-[6%]">
         {/* Heading */}
         <h3
           className="text-[14px] font-normal not-italic leading-none tracking-normal text-white opacity-80"
