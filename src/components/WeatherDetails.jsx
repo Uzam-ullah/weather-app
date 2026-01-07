@@ -16,7 +16,7 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
   const wind = weatherData.wind ?? 0;
 
   return (
-    <div className="fixed z-10 backdrop-blur-[19px] border-[#FFFFFF24] border-t-[5px] left-0 right-0 bottom-0 top-[247px] md:top-[452px] lg:top-0 lg:left-[63.5%] lg:border-t-0 lg:border-l-[5px] overflow-y-auto">
+    <div className="fixed z-10 backdrop-blur-[19px] border-[#FFFFFF24] border-t-[5px] left-0 right-0 bottom-0 top-[33vh] md:top-[43vh] lg:top-0 lg:left-[63.5%] lg:border-t-0 lg:border-l-[5px] overflow-y-auto">
 
       {/* Error Message Display */}
       {error && (
