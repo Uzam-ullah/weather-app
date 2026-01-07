@@ -8,9 +8,9 @@ const WeatherCard = ({ weatherData }) => {
   const date = weatherData?.date ?? '';
 
   return (
-    <div className="weather-card text-white font-['Roboto']">
+    <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none text-white font-['Roboto',system-ui,-apple-system,'Segoe_UI',Arial,sans-serif]">
       {/* Temperature */}
-      <div className="absolute left-5.5 top-35.5 w-21.5 h-18.75 md:left-9.75 md:top-66.75 md:w-40.25 md:h-35.25 lg:left-22.5 lg:top-104.25 lg:w-36 lg:h-31.5 weather-temp text-[64px] md:text-[120px] lg:text-[107px]">
+      <div className="absolute left-5.5 top-35.5 w-21.5 h-18.75 md:left-9.75 md:top-66.75 md:w-40.25 md:h-35.25 lg:left-22.5 lg:top-104.25 lg:w-36 lg:h-31.5 font-normal leading-none tracking-[-0.08em] text-[64px] md:text-[120px] lg:text-[107px]">
         {temperature}°
       </div>
 
@@ -21,7 +21,7 @@ const WeatherCard = ({ weatherData }) => {
         <div className="flex flex-col">
           {/* Location - Dynamic font with max-width and shrink */}
           <div
-            className="weather-location max-w-[140px] md:max-w-[220px] lg:max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap"
+            className="font-normal leading-none max-w-[140px] md:max-w-[220px] lg:max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap"
             style={{
               fontSize: 'clamp(20px, 7vw, 30px)',
             }}
@@ -29,20 +29,20 @@ const WeatherCard = ({ weatherData }) => {
             <span className="md:hidden">{location}</span>
           </div>
           <div
-            className="hidden md:block lg:hidden weather-location max-w-[220px] overflow-hidden text-ellipsis whitespace-nowrap"
+            className="hidden md:block lg:hidden font-normal leading-none max-w-[220px] overflow-hidden text-ellipsis whitespace-nowrap"
             style={{ fontSize: 'clamp(32px, 5vw, 48px)' }}
           >
             {location}
           </div>
           <div
-            className="hidden lg:block weather-location max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap"
+            className="hidden lg:block font-normal leading-none max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap"
             style={{ fontSize: 'clamp(32px, 3.5vw, 45px)' }}
           >
             {location}
           </div>
 
           {/* Time + Date - Added top margin */}
-          <div className="mt-2 md:mt-3 lg:mt-3 weather-time text-[10px] md:text-[16px] lg:text-[13.5px] opacity-90">
+          <div className="mt-2 md:mt-3 lg:mt-3 font-normal leading-none text-[10px] md:text-[16px] lg:text-[13.5px] opacity-90">
             {time}
             {time && date ? ' - ' : ''}
             {date}

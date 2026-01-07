@@ -103,11 +103,8 @@ const Header = ({ searchInput, onSearchInputChange, onSearch }) => {
 
           {/* Logo 3 with color */}
           <div
-            className="absolute top-0 left-9 w-3.75 h-6.75 md:top-0 md:left-[36.61px] md:w-[15.56px] md:h-[27.94px] lg:left-[54.84px] lg:w-[23.32px] lg:h-[41.86px]"
+            className="absolute top-0 left-9 w-3.75 h-6.75 md:top-0 md:left-[36.61px] md:w-[15.56px] md:h-[27.94px] lg:left-[54.84px] lg:w-[23.32px] lg:h-[41.86px] rotate-12 origin-bottom-left bg-[#F5BD52]"
             style={{
-              transform: 'rotate(12deg)',
-              transformOrigin: 'bottom left',
-              backgroundColor: '#F5BD52',
               WebkitMaskImage: `url(${logo3})`,
               WebkitMaskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',
@@ -125,13 +122,7 @@ const Header = ({ searchInput, onSearchInputChange, onSearch }) => {
       <div className="relative" ref={dropdownRef}>
         {/* Desktop Only: Seamless mask using same blur as WeatherDetails (19px) - blends naturally */}
         <div
-          className="hidden lg:block fixed top-0 h-[130px] z-30 pointer-events-none backdrop-blur-[19px]"
-          style={{
-            left: 'calc(780px + 5px)',
-            right: '0',
-            maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)'
-          }}
+          className="hidden lg:block fixed top-0 left-[calc(780px+5px)] right-0 h-[130px] z-30 pointer-events-none backdrop-blur-[19px] mask-[linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]"
         />
 
         <div className="absolute top-4.75 right-8 w-31.25 h-5 md:top-3.25 md:right-16 md:w-76.25 md:h-11.25 lg:top-10.25 lg:right-24 lg:w-92.75 lg:h-12.5 lg:z-40 border-b border-white/70">
