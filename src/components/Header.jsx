@@ -130,12 +130,16 @@ const Header = ({ searchInput, onSearchInputChange, onSearch }) => {
           {/* Search Input */}
           <input
             ref={inputRef}
-            type="text"
+            type="search"
             placeholder="Search Location..."
             value={searchInput}
             onChange={(e) => onSearchInputChange(e.target.value)}
             onKeyDown={handleKeyDown}
             onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
             className="absolute top-0.5 left-0 w-28.5 h-3.5 md:w-full md:h-11.25 md:top-0 lg:top-3.5 lg:w-full lg:h-5.75 pr-10 bg-transparent outline-none text-white/70 placeholder:text-white/70 font-roboto font-normal text-[10px] md:text-[18px] lg:text-[20px] leading-[100%]"
           />
 
