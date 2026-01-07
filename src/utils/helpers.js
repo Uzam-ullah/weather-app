@@ -70,3 +70,27 @@ export function getWeatherCondition(conditionText) {
 
   return conditionText;
 }
+
+/**
+ * Get background type based on weather condition
+ * @param {string} conditionText - Condition text from API
+ * @returns {string} - 'cold' | 'sunny' | 'rainy'
+ */
+export function getWeatherBackgroundType(conditionText) {
+  const text = conditionText.toLowerCase();
+
+  // Cold weather conditions
+  if (text.includes('snow') || text.includes('sleet') || text.includes('blizzard') ||
+    text.includes('ice') || text.includes('frost') || text.includes('freezing')) {
+    return 'cold';
+  }
+
+  // Rainy weather conditions
+  if (text.includes('rain') || text.includes('drizzle') || text.includes('shower') ||
+    text.includes('thunder') || text.includes('storm')) {
+    return 'rainy';
+  }
+
+  // Sunny weather conditions (default for clear, sunny, cloudy, etc.)
+  return 'sunny';
+}

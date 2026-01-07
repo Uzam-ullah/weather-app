@@ -36,7 +36,7 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
 
         {/* Heading - Weather condition with word-wrap for long descriptions */}
         <h3
-          className="text-[14px] md:text-[15px] lg:text-[16px] text-center md:text-center lg:text-left font-medium leading-snug uppercase text-white max-w-[320px] md:max-w-[380px] lg:max-w-[320px] break-words"
+          className="text-[14px] md:text-[15px] lg:text-[16px] text-center md:text-center lg:text-left font-medium leading-snug uppercase text-white max-w-[320px] md:max-w-[380px] lg:max-w-[320px] wrap-break-word"
         >
           {condition}
         </h3>

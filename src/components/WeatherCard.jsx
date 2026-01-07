@@ -40,7 +40,7 @@ const WeatherCard = ({ weatherData }) => {
           <img
             src={cloudIcon}
             alt="Cloud"
-            className="w-10 h-10 md:w-13.75 md:h-13.75 object-contain flex-shrink-0 mt-1 md:mt-2"
+            className="w-10 h-10 md:w-13.75 md:h-13.75 object-contain shrink-0 mt-1 md:mt-2"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ const WeatherCard = ({ weatherData }) => {
           <img
             src={cloudIcon}
             alt="Cloud"
-            className="w-13 h-13 object-contain flex-shrink-0 mt-2"
+            className="w-13 h-13 object-contain shrink-0 mt-2"
           />
         </div>
       </div>

@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-import bgDesktop from './assets/bg-images/bg-desktop.png';
-import bgMobile from './assets/bg-images/bg-mobile.png';
-import bgTablet from './assets/bg-images/bg-tab.png';
+import bgCold from './assets/bg-images/bg-desktop.png';    // Cold weather background
+import bgRainy from './assets/bg-images/bg-mobile.png';    // Rainy weather background
+import bgSunny from './assets/bg-images/bg-tab.png';       // Sunny weather background
 import Header from './components/Header.jsx';
 import WeatherCard from './components/WeatherCard.jsx';
 import WeatherDetails from './components/WeatherDetails.jsx';
 import { fetchCurrentWeather, fetchForecast } from './services/weatherService.js';
-import { formatDateTime, convertWindSpeed, formatTime, getWeatherCondition } from './utils/helpers.js';
+import { formatDateTime, convertWindSpeed, formatTime, getWeatherCondition, getWeatherBackgroundType } from './utils/helpers.js';
 
 function App() {
   const [city, setCity] = useState('London');
   const [searchInput, setSearchInput] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [backgroundType, setBackgroundType] = useState('sunny'); // 'cold' | 'sunny' | 'rainy'
 
   const [weatherData, setWeatherData] = useState({
     temperature: 0,
@@ -84,6 +85,9 @@ function App() {
       setCity(searchCity);
       setSearchInput(''); // Clear search input on success
 
+      // Update background based on weather condition
+      setBackgroundType(getWeatherBackgroundType(current.current.condition.text));
+
     } catch (err) {
       // Set styled error instead of alert
       setError(err.message || 'Location not found. Please try again.');
@@ -104,29 +108,23 @@ function App() {
     }
   };
 
+  // Get background image based on weather condition
+  const getBackgroundImage = () => {
+    switch (backgroundType) {
+      case 'cold': return bgCold;
+      case 'rainy': return bgRainy;
+      case 'sunny':
+      default: return bgSunny;
+    }
+  };
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
 
-      {/* Mobile Background */}
+      {/* Weather-based Background - responsive to all screen sizes */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
-        style={{ backgroundImage: `url(${bgMobile})` }}
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
-      </div>
-
-      {/* Tablet Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden md:block lg:hidden"
-        style={{ backgroundImage: `url(${bgTablet})` }}
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
-      </div>
-
-      {/* Desktop Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hidden lg:block"
-        style={{ backgroundImage: `url(${bgDesktop})` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${getBackgroundImage()})` }}
       >
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
