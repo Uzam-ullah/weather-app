@@ -5,6 +5,22 @@ import humadityIcon from '../assets/icons/humadity.png'
 import cloudIcon from '../assets/icons/cloud.png'
 import windIcon from '../assets/icons/wind.png'
 import snowIcon from '../assets/icons/freeze.png'
+import sunIcon from '../assets/icons/sun.png'
+
+// Helper function to get weather icon based on condition
+const getWeatherIcon = (condition) => {
+  const conditionLower = condition.toLowerCase();
+  if (conditionLower.includes('rain') || conditionLower.includes('drizzle') || conditionLower.includes('shower') || conditionLower.includes('thunderstorm')) {
+    return humadityIcon;
+  } else if (conditionLower.includes('cloud') || conditionLower.includes('overcast') || conditionLower.includes('mist') || conditionLower.includes('fog')) {
+    return cloudIcon;
+  } else if (conditionLower.includes('snow') || conditionLower.includes('sleet') || conditionLower.includes('blizzard') || conditionLower.includes('ice') || conditionLower.includes('frost') || conditionLower.includes('freezing')) {
+    return snowIcon;
+  } else if (conditionLower.includes('clear') || conditionLower.includes('sunny')) {
+    return sunIcon;
+  }
+  return sunIcon; // Default to sun icon
+};
 
 const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) => {
   // Extract values with defaults
@@ -192,7 +208,7 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
                 <div className="flex items-center gap-[12px]">
                   {/* Weather Icon */}
                   <img
-                    src={snowIcon}
+                    src={getWeatherIcon(forecast.condition)}
                     alt={`Weather at ${forecast.time}`}
                     className="w-[40px] h-[40px] object-contain opacity-90"
                   />
