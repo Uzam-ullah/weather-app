@@ -30,7 +30,7 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
         <div className="lg:hidden flex flex-col items-center h-full pb-0 relative">
 
           {/* SPACER - Forces visible gap between white border and content */}
-          <div className="h-[60px] md:h-[100px] w-full flex-shrink-0"></div>
+          <div className="h-[60px] md:h-[100px] w-full shrink-0"></div>
 
           {/* Weather Details Title */}
           <h2 className="text-[14px] md:text-[18px] font-normal text-white text-center">
@@ -102,12 +102,12 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
 
         {/* Desktop Layout - Original absolute positioning */}
         <h2
-          className="hidden lg:block absolute w-[141px] h-[21px] top-[132px] left-[30px] right-[6%] text-[18px] font-normal not-italic leading-none tracking-normal text-white"
+          className="hidden lg:block absolute w-[141px] h-[21px] top-[132px] left-[30px] text-[18px] font-normal not-italic leading-none tracking-normal text-white"
         >
           Weather Details...
         </h2>
 
-        <div className="hidden lg:flex absolute top-[175px] left-[30px] right-[6%] flex-col gap-[24px] pb-[20px]">
+        <div className="hidden lg:flex absolute top-[175px] left-[30px] min-w-[300px] flex-col gap-[24px] pb-[20px]">
 
           {/* Heading - Weather condition */}
           <h3 className="text-[16px] text-left font-medium leading-snug uppercase text-white max-w-[320px]">
@@ -169,7 +169,7 @@ const WeatherDetails = ({ weatherData = {}, forecastData = [], error = null }) =
         </div>
 
         {/* Hourly Weather Forecast Section - Desktop Only */}
-        <div className="hidden lg:block absolute top-[490px] left-[30px] right-[6%]">
+        <div className="hidden lg:block absolute top-[490px] left-[30px] min-w-[300px]">
           {/* Heading */}
           <h3
             className="text-[14px] font-normal not-italic leading-none tracking-normal text-white opacity-80"

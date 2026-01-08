@@ -46,7 +46,7 @@ const WeatherCard = ({ weatherData }) => {
       </div>
 
       {/* Desktop: Flex container for temperature + location together */}
-      <div className="hidden lg:flex absolute left-[5%] bottom-[12%] items-center gap-4">
+      <div className="hidden lg:flex absolute left-[80px] bottom-[100px] items-center gap-4">
         {/* Temperature */}
         <div className="font-normal leading-none tracking-[0.01em] text-[107px]">
           {temperature}°
@@ -56,8 +56,7 @@ const WeatherCard = ({ weatherData }) => {
         <div className="flex items-center gap-4">
           <div className="flex flex-col">
             <div
-              className="font-normal leading-none max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap"
-              style={{ fontSize: 'clamp(32px, 3.5vw, 45px)' }}
+              className="font-normal leading-none max-w-[280px] overflow-hidden text-ellipsis whitespace-nowrap text-[45px]"
             >
               {location}
             </div>
