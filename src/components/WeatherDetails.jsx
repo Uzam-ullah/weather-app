@@ -6,7 +6,7 @@ import cloudIcon from '../assets/icons/Cloudy.svg'
 import windIcon from '../assets/icons/wind1.svg'
 import snowIcon from '../assets/icons/freeze1.svg'
 import sunIcon from '../assets/icons/sun.png'
-import search from '../assets/icons/searchIcon.png'
+import search from '../assets/icons/search.svg'
 import { searchCities } from '../services/weatherService.js'
 
 // Helper function to get weather icon based on condition
