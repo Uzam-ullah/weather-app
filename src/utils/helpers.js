@@ -74,7 +74,7 @@ export function getWeatherCondition(conditionText) {
 /**
  * Get background type based on weather condition
  * @param {string} conditionText - Condition text from API
- * @returns {string} - 'cold' | 'sunny' | 'rainy'
+ * @returns {string} - 'cold' | 'sunny' | 'rainy' | 'cloudy'
  */
 export function getWeatherBackgroundType(conditionText) {
   const text = conditionText.toLowerCase();
@@ -91,6 +91,11 @@ export function getWeatherBackgroundType(conditionText) {
     return 'rainy';
   }
 
-  // Sunny weather conditions (default for clear, sunny, cloudy, etc.)
+  // Cloudy weather conditions
+  if (text.includes('cloud') || text.includes('overcast') || text.includes('mist') || text.includes('fog')) {
+    return 'cloudy';
+  }
+
+  // Sunny weather conditions (clear, sunny)
   return 'sunny';
 }

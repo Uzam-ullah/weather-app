@@ -3,7 +3,8 @@ import './App.css';
 
 import bgCold from './assets/bg-images/bg-desktop.png';    // Cold weather background
 import bgRainy from './assets/bg-images/bg-mobile.png';    // Rainy weather background
-import bgSunny from './assets/bg-images/bg-tab.png';       // Sunny weather background
+import bgCloudy from './assets/bg-images/bg-tab.png';      // Cloudy weather background
+import bgSunny from './assets/bg-images/sun.png';       // Sunny weather background
 import Header from './components/Header.jsx';
 import WeatherCard from './components/WeatherCard.jsx';
 import WeatherDetails from './components/WeatherDetails.jsx';
@@ -113,6 +114,7 @@ function App() {
     switch (backgroundType) {
       case 'cold': return bgCold;
       case 'rainy': return bgRainy;
+      case 'cloudy': return bgCloudy;
       case 'sunny':
       default: return bgSunny;
     }
@@ -129,16 +131,15 @@ function App() {
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
 
-      <Header
-        searchInput={searchInput}
-        onSearchInputChange={setSearchInput}
-        onSearch={handleSearchSubmit}
-      />
+      <Header />
       <WeatherCard weatherData={weatherData} />
       <WeatherDetails
         weatherData={weatherData}
         forecastData={forecastData}
         error={error}
+        searchInput={searchInput}
+        onSearchInputChange={setSearchInput}
+        onSearch={handleSearchSubmit}
       />
 
 
